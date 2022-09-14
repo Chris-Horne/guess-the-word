@@ -13,7 +13,7 @@ const guessedLetters = [];
 const placeholder = function (word) {
   const placeholderLetters = [];
   for (const letter of word) {
-    console.log(letter);
+    //console.log(letter);
     placeholderLetters.push("●");
   }
   wordInProgress.innerText = placeholderLetters.join("");
@@ -25,7 +25,7 @@ guessLetterButton.addEventListener("click", function (e) {
   e.preventDefault();
   message.innerText = "";
   const guess = letterInput.value;
-  console.log(guess);
+  //console.log(guess);
   const goodGuess = validateInput(guess);
 })
 
@@ -43,16 +43,15 @@ const validateInput = function (input) {
   }
 };
 
-const makeGuess = function (guess) {
+const makeGuess = function(guess) {
   guess = guess.toUpperCase();
   if (guessedLetters.includes(guess)) {
-    message.innerText = "You already guessed that letter, silly. Try again.";
+    message.innerText = "You have already guessed that letter.";
   } else {
     guessedLetters.push(guess);
     console.log(guessedLetters);
     showGuessedLetters();
   }
-}
 
 const showGuessedLetters = function () {
   guessedLettersElement.innerHTML = "";
@@ -60,5 +59,6 @@ const showGuessedLetters = function () {
     const li = document.createElement("li");
     li.innerText = letter;
     guessedLettersElement.append(li);
-  }
-};
+    }
+  };
+}
